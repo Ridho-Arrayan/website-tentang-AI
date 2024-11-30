@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Insights - Future of Technology</title>
+    <meta name="description" content="Explore the world of AI, from basics to advanced concepts" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&family=Space+Grotesk:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+      :root {
+        --neon-cyan: #0ff;
+        --neon-purple: #9b87f5;
+        --dark-bg: #0d1117;
+        --darker-bg: #1a1f25;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Space Grotesk', sans-serif;
+        background: linear-gradient(135deg, var(--dark-bg), var(--darker-bg));
+        color: #ffffff;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      #particles-js {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+      }
+
+      .content {
+        position: relative;
+        z-index: 2;
+      }
+
+      header {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: rgba(26, 31, 37, 0.8);
+        border-bottom: 2px solid var(--neon-cyan);
+      }
+
+      .hero-title {
+        font-size: 4rem;
+        color: var(--neon-cyan);
+        text-shadow: 0 0 15px var(--neon-cyan);
+        margin-bottom: 1rem;
+        animation: textGlow 2s infinite alternate;
+      }
+
+      .hero-subtitle {
+        font-size: 1.5rem;
+        color: var(--neon-purple);
+        opacity: 0;
+        animation: fadeInUp 1s forwards 0.5s;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      .section {
+        margin: 4rem 0;
+        padding: 2rem;
+        background: rgba(10, 10, 10, 0.9);
+        border-radius: 15px;
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.2);
+        transform: translateY(50px);
+        opacity: 0;
+        animation: fadeInUp 1s forwards;
+      }
+
+      .section:hover {
+        box-shadow: 0 0 40px rgba(0, 255, 255, 0.4);
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+      }
+
+      .section h2 {
+        color: var(--neon-cyan);
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        text-shadow: 0 0 10px var(--neon-cyan);
+      }
+
+      .section p {
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem;
+      }
+
+      .ai-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .ai-card {
+        background: rgba(26, 31, 37, 0.9);
+        padding: 2rem;
+        border-radius: 10px;
+        border: 1px solid var(--neon-purple);
+        transition: all 0.3s ease;
+      }
+
+      .ai-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 0 30px var(--neon-purple);
+      }
+
+      .ai-card h3 {
+        color: var(--neon-purple);
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+      }
+
+      .ai-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 1rem;
+      }
+
+      .glow-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: transparent;
+        color: var(--neon-cyan);
+        border: 2px solid var(--neon-cyan);
+        border-radius: 5px;
+        font-size: 1.1rem;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        transition: all 0.3s ease;
+        margin-top: 1rem;
+      }
+
+      .glow-btn:hover {
+        background: var(--neon-cyan);
+        color: var(--dark-bg);
+        box-shadow: 0 0 20px var(--neon-cyan);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 2rem;
+        margin: 3rem 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(26, 31, 37, 0.9);
+        border-radius: 10px;
+        border: 1px solid var(--neon-cyan);
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        color: var(--neon-cyan);
+        margin-bottom: 0.5rem;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(26, 31, 37, 0.8);
+        border-top: 2px solid var(--neon-cyan);
+        margin-top: 4rem;
+      }
+
+      @keyframes textGlow {
+        from {
+          text-shadow: 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan), 0 0 40px var(--neon-cyan);
+        }
+        to {
+          text-shadow: 0 0 5px var(--neon-cyan), 0 0 10px var(--neon-cyan), 0 0 20px var(--neon-cyan);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 3rem;
+        }
+        .section h2 {
+          font-size: 2rem;
+        }
+        .container {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="particles-js"></div>
+    <div class="content">
+      <header>
+        <h1 class="hero-title">AI Insights</h1>
+        <p class="hero-subtitle">Exploring the Future of Artificial Intelligence</p>
+      </header>
+
+      <div class="container">
+        <section class="section">
+          <h2>Understanding AI</h2>
+          <p>Artificial Intelligence represents the pinnacle of human innovation in computing, enabling machines to simulate human intelligence and decision-making processes. From simple task automation to complex problem-solving, AI has revolutionized how we interact with technology.</p>
+          <p>Artificial Intelligence (Kecerdasan Buatan) mewakili puncak inovasi manusia dalam komputasi, memungkinkan mesin untuk mensimulasikan kecerdasan dan proses pengambilan keputusan manusia. Mulai dari otomatisasi tugas sederhana hingga pemecahan masalah yang kompleks, AI telah merevolusi cara kita berinteraksi dengan teknologi</p>
+          <div class="stats">
+            <div class="stat-item">
+              <div class="stat-number">60%</div>
+              <p>Business Adoption</p>
+              <p>Adopsi Bisnis</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">$15.7T</div>
+              <p>Potential Impact by 2030</p>
+              <p>Dampak Potensial pada Tahun 2030</p>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">40%</div>
+              <p>Productivity Increase</p>
+              <p>Peningkatan Produktivitas</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>AI Tools for Web Development</h2>
+          <div class="ai-grid">
+            <div class="ai-card">
+              <img src="https://images.yourstory.com/cs/2/ba6b0930e8cd11edbf1c2f9de7fdeb77/FREE2-1684909018438.png?w=1152&fm=auto&ar=2:1&mode=crop&crop=faces" alt="ChatGPT">
+              <h3>ChatGPT</h3>
+              <p>A versatile AI language model that excels in code generation, debugging, and providing programming solutions. Perfect for rapid prototyping and learning new programming concepts.</p>
+            <p>Model bahasa AI serbaguna yang unggul dalam pembuatan kode, debugging, dan memberikan solusi pemrograman. Sangat cocok untuk prototipe cepat dan mempelajari konsep pemrograman baru</p>
+            </div>
+            <div class="ai-card">
+              <img src="https://archieveai.com/wp-content/uploads/2023/10/Blackbox.png" alt="BlackBox AI">
+              <h3>BlackBox AI</h3>
+              <p>Specialized in code analysis and optimization, BlackBox AI helps developers understand complex codebases and suggests improvements for better performance.</p>
+            <p>Mengkhususkan diri dalam analisis dan optimasi kode, BlackBox AI membantu pengembang memahami kode yang kompleks dan memberikan saran untuk meningkatkan performa.</p>
+            </div>
+            <div class="ai-card">
+              <img src="https://tse3.mm.bing.net/th?id=OIP.BUVoJUfXkVCJ6XcXz9AuaQHaEK&pid=Api&P=0&h=180" alt="Lovable AI">
+              <h3>Lovable AI</h3>
+              <p>An innovative AI platform focused on creating responsive, user-friendly web interfaces with minimal effort. Perfect for rapid prototyping and production-ready websites.</p>
+            <p>Platform AI inovatif yang berfokus pada pembuatan antarmuka web yang responsif dan ramah pengguna dengan upaya minimal. Sangat cocok untuk prototipe cepat dan situs web siap produksi.</p>
+            </div>
+            </div>
+            <div class="container">
+                <section class="section">
+                  <h2></h2>
+                  <p>I also utilize three main AI tools, namely ChatGPT, BlackBox, and Lovale, to assist me in the process of building websites. ChatGPT is incredibly useful for generating ideas, creating content, and solving programming issues efficiently. BlackBox helps me analyze and optimize code to make it more effective and high-performing. Meanwhile, Lovale simplifies the creation of responsive and user-friendly web interfaces in significantly less time. By combining these three AI tools, my work becomes faster, more efficient, and well-organized.</p>
+                    <p>Saya juga memanfaatkan tiga AI utama, yaitu ChatGPT, BlackBox, dan Lovale, untuk membantu saya dalam proses pembuatan website. ChatGPT sangat berguna dalam memberikan ide, menghasilkan konten, dan menyelesaikan masalah pemrograman dengan efisien. BlackBox membantu saya menganalisis serta mengoptimalkan kode agar lebih efektif dan berkinerja tinggi. Sementara itu, Lovale mempermudah pembuatan antarmuka web yang responsif dan ramah pengguna dengan waktu yang jauh lebih singkat. Dengan kombinasi ketiga AI ini, pekerjaan saya menjadi lebih cepat, efisien, dan terorganisir.</p>
+                
+        </section>
+
+        <section class="section">
+          <h2>JailbreakGPT Insights</h2>
+          <p>
+            JailbreakGPT is a method used to modify or alter the behavior of language models like GPT, allowing them to go beyond the limitations set by their creators. Typically, AI models have safety and ethical restrictions to prevent misuse. JailbreakGPT attempts to "free" the model from these limitations by using specific techniques, such as crafting prompts that trick the model into providing responses it would normally block.
+            
+            Its benefits include access to broader AI capabilities and aiding research, but its risks involve ethical violations, misuse, and potential security issues. Using JailbreakGPT should be done carefully and responsibly.</p>
+          <p>
+            JailbreakGPT adalah metode untuk mengubah atau memodifikasi perilaku model bahasa seperti GPT agar bisa melampaui batasan yang ditetapkan oleh pembuatnya. Biasanya, model AI memiliki batasan keamanan dan etika untuk mencegah penyalahgunaan. JailbreakGPT berusaha untuk "membebaskan" model dari batasan ini dengan menggunakan teknik tertentu, seperti menyusun prompt yang kreatif untuk mengelabui model agar memberikan jawaban yang biasanya diblokir.
+            
+            Manfaatnya termasuk akses ke kemampuan AI yang lebih luas dan membantu penelitian, tetapi risikonya mencakup pelanggaran etika, penyalahgunaan, dan potensi masalah keamanan data. Penggunaan JailbreakGPT harus dilakukan dengan bijak dan bertanggung jawab.</p>
+            <p>This tool enables developers to:</p>
+            <p>Alat ini memungkinkan pengembang untuk:</p>
+          <ul style="margin-left: 2rem; margin-bottom: 1rem;">
+            <li>Access advanced AI capabilities</li>
+            <li>Explore experimental features</li>
+            <li>Test AI boundaries responsibly</li>
+            <li>Exploration of AI Capabilities</li>
+            <li>AI Research</li>
+            <li>Development of New Features</li>
+>          </ul>
+            <p>It is important to remember that all information shared in this context is educational and not intended for use outside of learning purposes. Unethical or illegal use is not encouraged.</p>
+            <p>Penting untuk diingat bahwa semua informasi yang dibagikan dalam konteks ini bersifat edukatif dan tidak dimaksudkan untuk digunakan di luar tujuan pembelajaran. Penggunaan yang tidak etis atau ilegal tidak dianjurkan.</p>
+            <a href="https://github.com/Kimonarrow/ChatGPT-4o-Jailbreak" class="glow-btn" target="_blank">Explore JailbreakGPT</a>
+        </section>
+
+        <section class="section">
+          <h2>AI in Modern Web Development</h2>
+          <p>The integration of AI tools has transformed the web development landscape, enabling developers to create sophisticated applications with unprecedented speed and efficiency. Here's how each tool contributes to the development process:</p>
+          <p>Integrasi alat AI telah mengubah lanskap pengembangan web, memungkinkan pengembang untuk membuat aplikasi canggih dengan kecepatan dan efisiensi yang belum pernah terjadi sebelumnya. Berikut adalah bagaimana setiap alat berkontribusi dalam proses pengembangan</p>
+          <div class="ai-grid">
+            <div class="ai-card">
+              <h3>Code Generation</h3>
+              <p>AI assists in writing boilerplate code, creating components, and implementing common patterns, significantly reducing development time.</p>
+            <p>AI membantu dalam menulis kode boilerplate, membuat komponen, dan menerapkan pola umum, yang secara signifikan mengurangi waktu pengembangan.</p>
+            </div>
+            <div class="ai-card">
+              <h3>Debug Assistant</h3>
+              <p>AI tools help identify and fix bugs by analyzing code patterns and suggesting optimizations for better performance.</p>
+            <P>Alat AI membantu mengidentifikasi dan memperbaiki bug dengan menganalisis pola kode dan memberikan saran optimasi untuk kinerja yang lebih baik</P>
+            </div>
+            <div class="ai-card">
+              <h3>Design Implementation</h3>
+              <p>Convert design mockups into responsive, production-ready code with AI-powered tools and frameworks.</p>
+            <P>Ubah mockup desain menjadi kode responsif yang siap produksi dengan alat dan framework yang didukung AI</P>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <footer>
+        <p>&copy; 2024 AI Insights. Embracing the Future of Technology. Created by Ridho.</p>
+      </footer>
+    </div>
+
+    <script>
+      particlesJS('particles-js', {
+        particles: {
+          number: { value: 80, density: { enable: true, value_area: 800 } },
+          color: { value: '#0ff' },
+          shape: { type: 'circle' },
+          opacity: { value: 0.5, random: false },
+          size: { value: 3, random: true },
+          line_linked: {
+            enable: true,
+            distance: 150,
+            color: '#0ff',
+            opacity: 0.4,
+            width: 1
+          },
+          move: {
+            enable: true,
+            speed: 6,
+            direction: 'none',
+            random: false,
+            straight: false,
+            out_mode: 'out',
+            bounce: false,
+          }
+        },
+        interactivity: {
+          detect_on: 'canvas',
+          events: {
+            onhover: { enable: true, mode: 'repulse' },
+            onclick: { enable: true, mode: 'push' },
+            resize: true
+          }
+        },
+        retina_detect: true
+      });
+
+      // Intersection Observer for scroll animations
+      const sections = document.querySelectorAll('.section');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.animation = 'fadeInUp 1s forwards';
+          }
+        });
+      }, { threshold: 0.1 });
+
+      sections.forEach(section => observer.observe(section));
+    </script>
+  </body>
+</html>
